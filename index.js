@@ -5,15 +5,15 @@ const port = 7070
 const {spawn} = require('child_process')
 let piip;
 
-function forward() {spawn('python', ['./scripts/forward.py'])}
-function reverse() {spawn('python', ['./scripts/reverse.py'])}
-function left() {spawn('python', ['./scripts/left.py'])}
-function right() {spawn('python', ['./scripts/right.py'])}
-function stop() {spawn('python', ['./scripts/stop.py'])}
+function forward() {spawn('python', ['./assets/scripts/forward.py'])}
+function reverse() {spawn('python', ['./assets/scripts/reverse.py'])}
+function left() {spawn('python', ['./assets/scripts/left.py'])}
+function right() {spawn('python', ['.assets//scripts/right.py'])}
+function stop() {spawn('python', ['.assets//scripts/stop.py'])}
 function weapon1(direction) {
   if(direction === 'down'){
-    spawn('python', ['./scripts/weapon1-down.py'])}
-  else{spawn('python', ['./scripts/weapon1-up.py'])}
+    spawn('python', ['./assets/scripts/weapon1-down.py'])}
+  else{spawn('python', ['./assets/scripts/weapon1-up.py'])}
   }
 
 const wss = new ws.Server({noServer: true})
