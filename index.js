@@ -6,13 +6,13 @@ const {spawn} = require('child_process')
 let piip;
 
 function forward() {spawn('python', ['./assets/scripts/forward.py'])}
-function forwardStop() {spawn('python', ['./assets/scripts/forward-stop'])}
+function forwardStop() {spawn('python', ['./assets/scripts/forward-stop.py'])}
 function reverse() {spawn('python', ['./assets/scripts/reverse.py'])}
 function reverseStop() {spawn('python', ['./assets/scripts/reverse-stop.py'])}
 function left() {spawn('python', ['./assets/scripts/left.py'])}
 function leftStop() {spawn('python', ['./assets/scripts/left-stop.py'])}
 function right() {spawn('python', ['.assets//scripts/right.py'])}
-function rightStop() {spawn('python', ['./assets/scripts/right-stop'])}
+function rightStop() {spawn('python', ['./assets/scripts/right-stop.py'])}
 function weapon1(direction) {
   if(direction === 'down'){
     spawn('python', ['./assets/scripts/weapon1-down.py'])}
