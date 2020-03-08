@@ -1,6 +1,6 @@
-# bot-controller
+# Battle Bot Controller 
 
-<span style="font-weight:bold;">Parts for the build</span>
+## Parts For The Build
 
 • <a href="https://www.amazon.com/Raspberry-Model-2019-Quad-Bluetooth/dp/B07TD42S27">1 X Raspberry Pi (model 3 or 4)</a><br>
 • <a href="https://www.amazon.com/SanDisk-Class-UHS-I-Memory-SDSDUNC-016G-GN6IN/dp/B0143RTB1E">1 X SD Card</a><br>
@@ -9,14 +9,42 @@
 • <a href="https://www.amazon.com/XOOL-Assortment-Precise-Beautiful-Printed/dp/B072FKMYMF">24 X 3 M 10mm Bolts</a><br>
 • <a href="https://www.amazon.com/Swpeet-Stainless-Assortment-Perfect-Washers/dp/B07VPDZ2KJ">24 X 3 M Lock Nuts</a><br>
 • <a href="https://www.shapeways.com/">Access To A 3d Printer</a><br>
-• <a href=""></a><br>
+• <a href=""></a><br><br>
 
-<span style="font-weight:bold;">Pinout</span><br><br>
+
+
+
+
+
+
+
+## Installation Instruction<br>
+• <a href="https://downloads.raspberrypi.org/raspbian_full_latest"></a>Download Raspbian Disk Image<br>
+• Write Image To SD Card With <a href="https://raspberry-projects.com/pi/pi-operating-systems/win32diskimager">Win32 Disk Imager</a><br>
+• Insert SD Card In Raspberry Pi And Boot<br>
+• Skip The Software Update<br>
+• In Terminal:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;` sudo apt-get update && sudo apt-get upgrade `<br>
+&nbsp;&nbsp;&nbsp;&nbsp;` sudo apt-get install nodejs `<br>
+&nbsp;&nbsp;&nbsp;&nbsp;` cd ~/Desktop `<br>
+&nbsp;&nbsp;&nbsp;&nbsp;` git clone https://github.com/chillbuilds/bot-controller.git `<br>
+&nbsp;&nbsp;&nbsp;&nbsp;` sudo nano /etc/rc.local `<br>
+• Add This Line At The End Of The Sheet:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;` sudo node /home/pi/Desktop/bot-controller/index.js `<br>
+• CTRL + X to close text editor<br>
+• Y to save<br>
+• Enter To Confirm Save Location<br> 
+
+
+
+
+
+
+
+
+
+
+## Pinout<br><br>
 
 <img style="position:relative;width:80%;margin-left:10%;" src="./assets/images/pinout.png">
 <br><br>
-
-<span style="font-weight:bold;">Installation Instruction</span><br><br>
-• <a href="https://downloads.raspberrypi.org/raspbian_full_latest"></a>Download Raspbian Disk Image<br>
-• <a href="">Clone This Repo to Raspberry Pi Desktop</a><br>
-• <a href=""></a>sudo apt-get install nodejs<br>

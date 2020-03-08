@@ -6,10 +6,13 @@ const {spawn} = require('child_process')
 let piip;
 
 function forward() {spawn('python', ['./assets/scripts/forward.py'])}
+function forwardStop() {spawn('python', ['./assets/scripts/forward-stop'])}
 function reverse() {spawn('python', ['./assets/scripts/reverse.py'])}
+function reverseStop() {spawn('python', ['./assets/scripts/reverse-stop.py'])}
 function left() {spawn('python', ['./assets/scripts/left.py'])}
+function leftStop() {spawn('python', ['./assets/scripts/left-stop.py'])}
 function right() {spawn('python', ['.assets//scripts/right.py'])}
-function stop() {spawn('python', ['.assets//scripts/stop.py'])}
+function rightStop() {spawn('python', ['./assets/scripts/right-stop'])}
 function weapon1(direction) {
   if(direction === 'down'){
     spawn('python', ['./assets/scripts/weapon1-down.py'])}
@@ -39,20 +42,29 @@ function onConnect(ws) {
     ws.send(message)
     console.log(message)
     switch(message) {
-      case 'forward':
+      case 'keydown @ 87':
         forward()
         break
-      case 'reverse':
+      case 'keyup @ 87':
+        forwardStop()
+        break
+      case 'keydown @ 83':
         reverse()
         break
-      case 'left':
+      case 'keyup @ 83':
+        reverseStop()
+        break
+      case 'keydown @ 65':
         left()
         break
-      case 'right':
+      case 'keyup @ 65':
+        leftStop()
+        break
+      case 'keydown @ 68':
         right()
         break
-      case 'stop':
-        stop()
+      case 'keyup @ 68':
+        rightStop()
         break
       case 'down-weapon1':
         weapon1('down')
