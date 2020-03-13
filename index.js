@@ -4,19 +4,15 @@ const ws = require('ws')
 const port = 7070
 const {spawn} = require('child_process')
 let piip;
-
-function forward() {spawn('python', ['./assets/scripts/forward.py'])}
-function forwardStop() {spawn('python', ['./assets/scripts/forward-stop.py'])}
-function reverse() {spawn('python', ['./assets/scripts/reverse.py'])}
-function reverseStop() {spawn('python', ['./assets/scripts/reverse-stop.py'])}
-function left() {spawn('python', ['./assets/scripts/left.py'])}
-function leftStop() {spawn('python', ['./assets/scripts/left-stop.py'])}
-function right() {spawn('python', ['.assets//scripts/right.py'])}
-function rightStop() {spawn('python', ['./assets/scripts/right-stop.py'])}
+function forward() {spawn('python', ['/home/pi/Desktop/bot-controller/assets/scripts/forward.py'])}
+function reverse() {spawn('python', ['/home/pi/Desktop/bot-controller/assets/scripts/reverse.py'])}
+function left() {spawn('python', ['/home/pi/Desktop/bot-controller/assets/scripts/left.py'])}
+function right() {spawn('python', ['/home/pi/Desktop/bot-controller/assets/scripts/right.py'])}
+function stop() {spawn('python', ['/home/pi/Desktop/bot-controller/assets/scripts/stop.py'])}
 function weapon1(direction) {
   if(direction === 'down'){
-    spawn('python', ['./assets/scripts/weapon1-down.py'])}
-  else{spawn('python', ['./assets/scripts/weapon1-up.py'])}
+    spawn('python', ['/home/pi/Desktop/bot-controller/assets/scripts/weapon-on.py'])}
+  else{spawn('python', ['/home/pi/Desktop/bot-controller/assets/scripts/weapon-off.py'])}
   }
 
 const wss = new ws.Server({noServer: true})
@@ -46,30 +42,33 @@ function onConnect(ws) {
         forward()
         break
       case 'keyup @ 87':
-        forwardStop()
+        stop()
         break
       case 'keydown @ 83':
         reverse()
         break
       case 'keyup @ 83':
-        reverseStop()
+        stop()
         break
       case 'keydown @ 65':
         left()
         break
       case 'keyup @ 65':
-        leftStop()
+        stop()
         break
       case 'keydown @ 68':
         right()
         break
       case 'keyup @ 68':
-        rightStop()
+        stop()
         break
-      case 'down-weapon1':
+      case 'stop':
+        stop()
+        break
+      case 'keydown @ 32':
         weapon1('down')
         break
-      case 'up-weapon1':
+      case 'keyup @ 32':
         weapon1('up')
         break
       default:
@@ -79,7 +78,7 @@ function onConnect(ws) {
 }
 
 if (!module.parent) {
-  http.createServer(accept).listen(7070);
+  http.createServer(accept).listen(port);
   console.log(`\nWebSocket server running on port ${port}\n`)
   piip = ipCheck()
   console.log(piip)
